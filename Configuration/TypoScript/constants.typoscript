@@ -1,0 +1,6 @@
+plugin.tx_ccimage {
+	settings {
+		# cat=plugin.tx_ccimage/settings; type=boolean; label=Use default crop variants desktop, tablet and mobile:These crop variants have to be configured explicitly.
+		useDefaultCropvariants = 0
+	}
+}

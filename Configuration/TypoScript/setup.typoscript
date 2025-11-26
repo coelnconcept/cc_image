@@ -1,0 +1,69 @@
+plugin.tx_ccimage {
+	view {
+		templateRootPaths {
+			0 = EXT:cc_image/Resources/Private/Templates/
+			10 = {$plugin.tx_ccimage.view.templateRootPath}
+		}
+
+		partialRootPaths {
+			0 = EXT:cc_image/Resources/Private/Partials/
+			10 = {$plugin.tx_ccimage.view.partialRootPath}
+		}
+
+		layoutRootPaths {
+			0 = EXT:cc_image/Resources/Private/Layouts/
+			10 = {$plugin.tx_ccimage.view.layoutRootPath}
+		}
+	}
+}
+
+lib.contentElement {
+	templateRootPaths {
+		2 = EXT:cc_image/Resources/Private/Fluid/Templates/
+	}
+	partialRootPaths {
+		2 = EXT:cc_image/Resources/Private/Fluid/Partials/
+	}
+	layoutRootPaths {
+		2 = EXT:cc_image/Resources/Private/Fluid/Layouts/
+	}
+	
+	settings {
+		media {
+			breakpoints.default {
+				1250 {
+					1 = 1920
+					2 = 3840
+				}
+				1000 {
+					1 = 1280
+					2 = 1920
+				}
+				750 {
+					1 = 960
+					2 = 1280
+				}
+				480 {
+					1 = 768
+					2 = 960
+				}
+				250 {
+					1 = 480
+					2 = 768
+				}
+			}
+			cropVariants.default {
+			}
+		}
+	}
+}
+
+[{$plugin.tx_ccimage.settings.useDefaultCropvariants} == 1]
+	lib.contentElement.settings.media.cropVariants.default {
+		1250 = desktop
+		1000 = desktop
+		750 = tablet
+		480 = mobile
+		250 = mobile
+	}
+[global]
