@@ -1,5 +1,9 @@
 See https://www.coelnconcept.de/serviceportale/systeme/typo3/typo3-extensions-von-coeln-concept/cc-image/
 
+1.4.1 	2026-07-09 tda  <info@coelnconcept.de>
+
+	* Fixed treatIdAsReference as image option in Picture partial
+
 1.4.0 	2024-12-12 tda  <info@coelnconcept.de>
 
 	* Support for TYPO3 13.4. and support for cropVariants, Breakpoints via typoscript

@@ -1,6 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:cc="http://typo3.org/ns/CoelnConcept/CcImage/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:alias map="{
-	imageObject:'{cc:image.objectFromSrc(image:image,src:src)}',
+	imageObject:'{cc:image.objectFromSrc(image:image,src:src,treatIdAsReference:treatIdAsReference)}',
 	imageMaxWidth:'{f:if(condition:maxWidth, then:maxWidth, else:width)}'
 }">
 <f:alias map="{
@@ -16,23 +16,23 @@
 			<f:alias map="{cropVariant:'{cropVariants.{deviceWidth}}'}">
 			<f:if condition="{imageObject.properties.width} >= {imageWidth.1} && (!{imageMaxWidth} || {imageMaxWidth} >= {imageWidth.1})">
 				<f:then>
-					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, maxWidth:imageWidth.1, cropVariant:cropVariant, fileExtension:'webp')}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {cc:uri.image(image:image, src:src, maxWidth:imageWidth.2, cropVariant:cropVariant, fileExtension:\'webp\')} 2x')}" type="image/webp" />
-					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, maxWidth:imageWidth.1, cropVariant:cropVariant)}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {f:uri.image(image:image, src:src, maxWidth:imageWidth.2, cropVariant:cropVariant)} 2x')}" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.1, cropVariant:cropVariant, fileExtension:'webp')}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {cc:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.2, cropVariant:cropVariant, fileExtension:\'webp\')} 2x')}" type="image/webp" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.1, cropVariant:cropVariant)}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {f:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.2, cropVariant:cropVariant)} 2x')}" />
 				</f:then>
 				<f:else if="{imageMaxWidth} && {next.1} < {imageMaxWidth}">
-					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, maxWidth:imageMaxWidth, cropVariant:cropVariant, fileExtension:'webp')}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {cc:uri.image(image:image, src:src, maxWidth:imageWidth.2, cropVariant:cropVariant, fileExtension:\'webp\')} 2x')}" type="image/webp" />
-					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, maxWidth:imageMaxWidth, cropVariant:cropVariant)}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {f:uri.image(image:image, src:src, maxWidth:imageWidth.2, cropVariant:cropVariant)} 2x')}" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageMaxWidth, cropVariant:cropVariant, fileExtension:'webp')}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {cc:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.2, cropVariant:cropVariant, fileExtension:\'webp\')} 2x')}" type="image/webp" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageMaxWidth, cropVariant:cropVariant)}{f:if(condition:'{imageWidth.2} && {imageObject.properties.width} >= {deviceWidth}', then:', {f:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, maxWidth:imageWidth.2, cropVariant:cropVariant)} 2x')}" />
 				</f:else>
 				<f:else if="!{imageMaxWidth} && {imageWidth.1} > {imageObject.properties.width} && {next.1} < {imageObject.properties.width}">
-					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, cropVariant:cropVariant, fileExtension:'webp')}" type="image/webp" />
-					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, cropVariant:cropVariant)}" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{cc:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, cropVariant:cropVariant, fileExtension:'webp')}" type="image/webp" />
+					<source media="(min-width: {deviceWidth}px)" srcset="{f:uri.image(image:image, src:src, treatIdAsReference:treatIdAsReference, cropVariant:cropVariant)}" />
 				</f:else>
 			</f:if>
 			</f:alias>
 			</f:alias>
 		</f:for>
 	</f:if>
-	<f:image image="{image}" src="{src}" width="{width}" height="{height}" maxWidth="{maxWidth}" maxHeight="{maxHeight}" alt="{alt}" title="{title}" class="{class}" additionalAttributes="{additionalAttributes}" loading="{f:if(condition:loading, then:loading, else:settings.media.lazyLoading)}" />
+	<f:image image="{image}" src="{src}" treatIdAsReference="{treatIdAsReference}" width="{width}" height="{height}" maxWidth="{maxWidth}" maxHeight="{maxHeight}" alt="{alt}" title="{title}" class="{class}" additionalAttributes="{additionalAttributes}" loading="{f:if(condition:loading, then:loading, else:settings.media.lazyLoading)}" />
 </picture>
 </f:alias>
 </f:alias>
